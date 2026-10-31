@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>개인정보처리방침 · Roa</title>
+    <meta name="description" content="Roa(로아)의 개인정보처리방침 — 개인정보 수집, 이용 및 보관 안내.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+    <style>
+        :root {
+            --navy: #0f2a4a;
+            --navy-dark: #0b1f38;
+            --navy-soft: #1f4e8c;
+            --accent: #c9a14a;
+            --accent-hover: #b89036;
+            --text: #111827;
+            --body: #374151;
+            --muted: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f6f7f9;
+            --line: #e4e7ec;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--body);
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+                system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.65;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        a { color: inherit; text-decoration: none; }
+        strong { color: var(--text); font-weight: 600; }
+
+        /* ───────── Navigation ───────── */
+        .roa-nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+        .roa-nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            padding: 18px 32px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .roa-brand { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; letter-spacing: -0.02em; }
+        .roa-egg {
+            width: 26px; height: 30px;
+            background: #ffffff;
+            border-radius: 50% 50% 48% 48% / 62% 62% 40% 40%;
+            box-shadow:
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+                inset 1px 1px 3px rgba(255, 255, 255, 1),
+                0 1px 3px rgba(10, 37, 64, 0.15);
+            flex-shrink: 0;
+        }
+        .roa-brand-text { font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+        .roa-brand-text small { font-weight: 500; color: var(--muted); margin-left: 6px; font-size: 0.82rem; }
+
+        .roa-menu { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
+        .roa-menu > li { position: relative; }
+        .roa-menu a {
+            display: inline-block;
+            padding: 10px 18px;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: color .15s;
+        }
+        .roa-menu a:hover { color: var(--accent); }
+        .roa-menu a.active { color: var(--accent); }
+
+        /* ───────── Legal page hero ───────── */
+        .legal-hero {
+            padding: 140px 32px 72px;
+            background: var(--navy);
+            color: #ffffff;
+            text-align: center;
+        }
+        .legal-hero .eyebrow {
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 2px;
+            margin-bottom: 28px;
+        }
+        .legal-hero h1 {
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin: 0 0 14px;
+            color: #ffffff;
+        }
+        .legal-hero .meta {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* ───────── Legal content ───────── */
+        .legal {
+            padding: 72px 32px 100px;
+            background: var(--bg);
+        }
+        .legal-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .legal-lead {
+            padding: 22px 26px;
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            border-radius: 2px;
+            margin-bottom: 48px;
+            font-size: 0.98rem;
+            color: var(--body);
+            line-height: 1.8;
+        }
+        .legal h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.015em;
+            margin: 44px 0 16px;
+            padding-top: 32px;
+            border-top: 1px solid var(--line);
+        }
+        .legal h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+        .legal h3 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 28px 0 10px;
+            letter-spacing: -0.01em;
+        }
+        .legal p {
+            margin: 0 0 14px;
+            font-size: 0.96rem;
+            line-height: 1.85;
+            color: var(--body);
+        }
+        .legal ul, .legal ol {
+            margin: 0 0 14px;
+            padding-left: 22px;
+            font-size: 0.96rem;
+            line-height: 1.9;
+            color: var(--body);
+        }
+        .legal li { margin-bottom: 4px; }
+        .legal table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0 22px;
+            font-size: 0.92rem;
+        }
+        .legal table th,
+        .legal table td {
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+        .legal table th {
+            background: var(--bg-alt);
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.2px;
+        }
+        .legal table td { color: var(--body); }
+        .legal .note {
+            margin-top: 56px;
+            padding: 22px 26px;
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        .legal .note strong { color: var(--navy); }
+
+        /* ───────── Footer (copy of home.html) ───────── */
+        footer.roa-footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 72px 32px 28px;
+        }
+        .footer-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 56px;
+            padding-bottom: 44px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-col h4 {
+            font-size: 0.78rem; font-weight: 700; color: #ffffff;
+            letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 20px;
+        }
+        .footer-col p, .footer-col a {
+            color: rgba(255, 255, 255, 0.62); font-size: 0.9rem; line-height: 2; display: block;
+        }
+        .footer-col a:hover { color: #ffffff; }
+        .footer-about .roa-brand { margin-bottom: 18px; }
+        .footer-about .roa-brand-text { color: #ffffff; }
+        .footer-about .roa-brand-text small { color: rgba(255, 255, 255, 0.5); }
+        .footer-about .desc {
+            color: rgba(255, 255, 255, 0.6); font-size: 0.92rem; line-height: 1.75; max-width: 360px;
+        }
+        .footer-bottom {
+            max-width: 1280px; margin: 0 auto; padding-top: 24px;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            color: rgba(255, 255, 255, 0.4); font-size: 0.8rem;
+        }
+        .footer-business {
+            max-width: 1280px; margin: 0 auto; padding: 32px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-business h4 {
+            font-size: 0.78rem; font-weight: 700; color: #ffffff;
+            letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 18px;
+        }
+        .biz-info {
+            margin: 0; padding: 0;
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 40px;
+        }
+        .biz-info > div { display: flex; gap: 14px; font-size: 0.9rem; line-height: 1.7; }
+        .biz-info dt { color: rgba(255, 255, 255, 0.5); min-width: 110px; flex-shrink: 0; }
+        .biz-info dd { margin: 0; color: rgba(255, 255, 255, 0.75); word-break: keep-all; }
+        .biz-info dd a { color: inherit; }
+        .biz-info dd a:hover { color: #ffffff; }
+        .biz-info .biz-highlight dd { color: #ffffff; font-weight: 600; letter-spacing: 0.2px; }
+
+        @media (max-width: 900px) {
+            .roa-nav-inner { padding: 16px 20px; }
+            .roa-menu a { padding: 8px 10px; font-size: 0.88rem; }
+            .legal-hero { padding: 120px 24px 56px; }
+            .legal { padding: 56px 24px 80px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+        }
+        @media (max-width: 700px) {
+            .biz-info { grid-template-columns: 1fr; gap: 8px; }
+            .biz-info dt { min-width: 96px; }
+        }
+        @media (max-width: 520px) {
+            .roa-brand-text small { display: none; }
+            .roa-menu { gap: 0; }
+            .roa-menu a { padding: 8px 6px; font-size: 0.82rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═════════ NAV ═════════ -->
+<nav class="roa-nav">
+    <div class="roa-nav-inner">
+        <a href="/" class="roa-brand" aria-label="Roa 로아 홈">
+            <span class="roa-egg" aria-hidden="true"></span>
+            <span class="roa-brand-text">Roa<small>로아</small></span>
+        </a>
+        <ul class="roa-menu">
+            <li><a href="/#about">회사소개</a></li>
+            <li><a href="/#services">서비스</a></li>
+            <li><a href="/terms.html">이용약관</a></li>
+            <li><a href="/privacy.html" class="active">개인정보처리방침</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ═════════ HERO ═════════ -->
+<header class="legal-hero">
+    <span class="eyebrow">Privacy Policy</span>
+    <h1>개인정보처리방침</h1>
+    <p class="meta">시행일: 2026년 4월 24일</p>
+</header>
+
+<!-- ═════════ CONTENT ═════════ -->
+<section class="legal">
+    <div class="legal-inner">
+
+        <p class="legal-lead">
+            로아(이하 "회사")는 이용자의 개인정보를 중요시하며,
+            「개인정보 보호법」 및 관련 법령을 준수합니다.
+            본 방침은 회사가 운영하는 Roa AI(app.roa-ai.com) 및
+            Roa Magen(deep.roa-ai.com) 서비스의 개인정보 처리에 관한 사항을 정합니다.
+        </p>
+
+        <h2>제1조 (수집하는 개인정보 항목)</h2>
+        <p>회사는 서비스 제공을 위해 다음 항목을 처리합니다. 아래 과거 결제 기록은 기존 거래에서 생성되어 법령상 보관 기간 동안 관리될 수 있습니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 28%;">구분</th>
+                    <th>수집 항목</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>회원 가입</strong></td>
+                    <td>이메일 주소, 비밀번호(암호화 저장)</td>
+                </tr>
+                <tr>
+                    <td><strong>과거 거래 기록</strong></td>
+                    <td>
+                        마스킹된 카드 식별 정보, 결제 승인 번호, 결제 금액·일시, 빌링키 등
+                        <br><small style="color: var(--muted);">* 현재 카드 등록 및 정기결제 기능은 제공하지 않습니다.</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>서비스 이용 기록</strong></td>
+                    <td>접속 로그, 접속 IP, 쿠키, 기기 정보, 이용 기록</td>
+                </tr>
+                <tr>
+                    <td><strong>모니터링 입력 정보<br>(Roa Magen)</strong></td>
+                    <td>모니터링 대상 이메일, 도메인, 키워드 등 이용자가 직접 입력한 정보</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>제2조 (개인정보의 수집 및 이용 목적)</h2>
+        <ul>
+            <li>회원 가입 및 본인 확인, 회원제 서비스 제공</li>
+            <li>과거 거래 기록 보관 및 관련 법령 준수</li>
+            <li>다크웹 위협 모니터링, AI 어시스턴트 등 서비스 제공</li>
+            <li>이용자 문의 대응 및 고지사항 전달</li>
+            <li>부정 이용 방지 및 서비스 품질 개선</li>
+        </ul>
+
+        <h2>제3조 (개인정보의 보유 및 이용 기간)</h2>
+        <p>회사는 이용자의 개인정보를 수집·이용 목적이 달성되면 지체 없이 파기합니다. 단, 관련 법령에 따라 다음 정보는 일정 기간 보관합니다.</p>
+        <ul>
+            <li>계약 또는 청약철회 등에 관한 기록: <strong>5년</strong> (전자상거래법)</li>
+            <li>대금 결제 및 재화 등의 공급에 관한 기록: <strong>5년</strong> (전자상거래법)</li>
+            <li>소비자 불만 또는 분쟁 처리에 관한 기록: <strong>3년</strong> (전자상거래법)</li>
+            <li>접속 로그 기록: <strong>3개월</strong> (통신비밀보호법)</li>
+        </ul>
+
+        <h2>제4조 (개인정보의 제3자 제공)</h2>
+        <p>회사는 이용자의 개인정보를 본인 동의 없이 제3자에게 제공하지 않습니다. 다만 아래의 경우에 한해 개인정보를 제공합니다.</p>
+
+        <h3>1. 과거 결제 처리 관련 제3자 제공</h3>
+        <p>결제 연동은 종료되었으며, 아래 내용은 과거 거래 당시 제공된 정보에 관한 안내입니다.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 28%;">항목</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>제공받는 자</strong></td>
+                    <td>㈜토스페이먼츠 (과거 결제 처리)</td>
+                </tr>
+                <tr>
+                    <td><strong>제공 목적</strong></td>
+                    <td>과거 카드 결제 및 거래 처리</td>
+                </tr>
+                <tr>
+                    <td><strong>제공 항목</strong></td>
+                    <td>과거 처리 당시 제공된 고객 식별자, 결제 및 주문 정보</td>
+                </tr>
+                <tr>
+                    <td><strong>보유 및 이용 기간</strong></td>
+                    <td>관련 법령에 따른 보관 기간</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.9rem; color: var(--muted);">
+            ※ 토스페이먼츠와의 연동은 종료되어 현재 결제 요청을 보내지 않습니다. 과거 거래 기록은 관계 법령에 따른 보관 기간 동안 관리합니다.
+        </p>
+
+        <h3>2. 법령에 근거한 제공</h3>
+        <p>법령에 특별한 규정이 있거나 수사기관이 수사 목적으로 법령에 정해진 절차와 방법에 따라 요구하는 경우 제공할 수 있습니다.</p>
+
+        <h2>제5조 (개인정보 처리 위탁)</h2>
+        <p>회사는 서비스 운영을 위해 다음과 같이 개인정보 처리를 위탁합니다.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>수탁사</th>
+                    <th>위탁 업무</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>㈜토스페이먼츠 (과거 처리)</td>
+                    <td>과거 결제 처리</td>
+                </tr>
+                <tr>
+                    <td>클라우드 인프라 제공사</td>
+                    <td>서비스 서버 운영 및 데이터 저장</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>제6조 (이용자의 권리)</h2>
+        <p>이용자는 언제든지 다음 권리를 행사할 수 있습니다.</p>
+        <ul>
+            <li>개인정보 열람, 정정, 삭제, 처리 정지 요구</li>
+            <li>개인정보 제3자 제공에 대한 동의 철회</li>
+            <li>회원 탈퇴 및 개인정보 삭제 요청</li>
+        </ul>
+        <p>권리 행사는 서비스 내 설정 메뉴를 통해 요청하실 수 있으며, 회사는 지체 없이 조치합니다.</p>
+
+        <h2>제7조 (개인정보의 안전성 확보 조치)</h2>
+        <ul>
+            <li>비밀번호 단방향 암호화 저장</li>
+            <li>현재 결제 카드 정보를 수집하거나 결제를 처리하지 않음</li>
+            <li>접속 기록 보관 및 위변조 방지</li>
+            <li>개인정보 취급자 최소화 및 접근 권한 관리</li>
+        </ul>
+
+        <h2>제8조 (쿠키의 사용)</h2>
+        <p>회사는 이용자의 로그인 유지 및 서비스 개선을 위해 쿠키를 사용할 수 있으며, 이용자는 웹 브라우저 설정을 통해 쿠키 저장을 거부할 수 있습니다. 다만 쿠키 저장을 거부할 경우 일부 서비스 이용에 제한이 있을 수 있습니다.</p>
+
+        <h2>제9조 (개인정보 보호책임자)</h2>
+        <ul style="list-style: none; padding-left: 0;">
+        </ul>
+
+        <h2>제10조 (방침의 변경)</h2>
+        <p>본 방침은 법령 및 서비스 정책 변경에 따라 개정될 수 있으며, 변경 시 시행일 7일 전 홈페이지 공지사항을 통해 안내합니다.</p>
+
+        <div class="note">
+            <strong>부칙</strong><br>
+            본 개인정보처리방침은 <strong>2026년 4월 24일</strong>부터 시행됩니다.
+        </div>
+
+    </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer class="roa-footer">
+    <div class="footer-inner">
+        <div class="footer-col footer-about">
+            <a href="/" class="roa-brand">
+                <span class="roa-egg" aria-hidden="true"></span>
+                <span class="roa-brand-text">Roa<small>로아</small></span>
+            </a>
+            <p class="desc">Roa는 다크웹 위협 모니터링과 AI 어시스턴트 서비스를 운영하는 보안 기업입니다.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Service</h4>
+            <a href="https://app.roa-ai.com" target="_blank" rel="noopener">Roa AI</a>
+            <a href="https://deep.roa-ai.com" target="_blank" rel="noopener">Roa Magen</a>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="/terms.html">이용약관</a>
+            <a href="/privacy.html">개인정보처리방침</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span id="year"></span> Roa. All rights reserved.</span>
+        <span>roa-ai.com</span>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

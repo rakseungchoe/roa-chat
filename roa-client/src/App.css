@@ -1,0 +1,65 @@
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  /* 터치 기기 탭 하이라이트 제거 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100dvh;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body {
+  background: #f9f9f9;
+  color: #1e293b;
+  font-family: 'DM Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  /* iOS 300ms 탭 딜레이 제거 */
+  touch-action: manipulation;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 4px; }
+
+/* ── 터치 친화적 최소 크기 ────────────────────────────
+   WCAG 권장 터치 타깃: 44×44px 이상                    */
+@media (max-width: 1023px) {
+  button, [role="button"] {
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  button, [role="button"] {
+    min-height: 44px;
+  }
+
+  /* iOS 인풋 줌 방지 */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* ── 모바일 가로 오버플로우 완전 차단 ──────────────── */
+  /* position: fixed/absolute 요소도 포함해서 viewport 너비 초과 방지 */
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+  /* flex/grid 자식이 content 크기로 부풀어오르는 것 방지 */
+  img, video, pre, table {
+    max-width: 100%;
+  }
+  /* 긴 텍스트(URL 등) 자동 줄바꿈 */
+  p, span, div, li, td, th {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}

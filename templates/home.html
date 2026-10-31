@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roa · 기업의 일과 보안을 더 똑똑하게</title>
+    <meta name="description" content="Roa(로아)는 다크웹 위협 모니터링 서비스를 제공하는 보안 기업입니다.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+    <style>
+        :root {
+            --navy: #0f2a4a;
+            --navy-dark: #0b1f38;
+            --navy-soft: #1f4e8c;
+            --accent: #c9a14a;
+            --accent-hover: #b89036;
+            --text: #111827;
+            --body: #374151;
+            --muted: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f6f7f9;
+            --line: #e4e7ec;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--body);
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+                system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.65;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        a { color: inherit; text-decoration: none; }
+        strong { color: var(--text); font-weight: 600; }
+
+        /* ───────── Navigation ───────── */
+        .roa-nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+        .roa-nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .roa-brand {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+        .roa-egg {
+            width: 26px; height: 30px;
+            background: #ffffff;
+            border-radius: 50% 50% 48% 48% / 62% 62% 40% 40%;
+            box-shadow:
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+                inset 1px 1px 3px rgba(255, 255, 255, 1),
+                0 1px 3px rgba(10, 37, 64, 0.15);
+            flex-shrink: 0;
+        }
+        .roa-brand-text {
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+        .roa-brand-text small {
+            font-weight: 500;
+            color: var(--muted);
+            margin-left: 6px;
+            font-size: 0.82rem;
+        }
+
+        .roa-menu {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            list-style: none;
+            margin: 0; padding: 0;
+        }
+        .roa-menu > li { position: relative; }
+        .roa-menu a {
+            display: inline-block;
+            padding: 10px 18px;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: color .15s;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .roa-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* ───────── Hero ───────── */
+        .hero {
+            position: relative;
+            min-height: 88vh;
+            display: flex; align-items: center;
+            padding: 140px 32px 100px;
+            background-image:
+                linear-gradient(180deg, rgba(15, 42, 74, 0.78) 0%, rgba(15, 42, 74, 0.65) 100%),
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2400&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 1000px; margin: 0 auto;
+            text-align: center;
+            color: #ffffff;
+        }
+        .hero-label {
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 2px;
+            margin-bottom: 32px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.03em;
+            margin: 0 0 24px;
+            color: #ffffff;
+        }
+        .hero h1 .accent { color: var(--accent); }
+        .hero p.sub {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.82);
+            margin: 0 auto 44px;
+            max-width: 640px;
+            font-weight: 400;
+        }
+        .hero-actions {
+            display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+        }
+        .btn-primary {
+            padding: 14px 32px;
+            background: var(--accent);
+            color: #1a1a1a;
+            font-weight: 700;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background .15s, border-color .15s;
+        }
+        .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #1a1a1a; }
+        .btn-outline {
+            padding: 14px 32px;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 2px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background .15s, border-color .15s;
+        }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; color: #ffffff; }
+
+        /* ───────── Sections ───────── */
+        section { padding: 110px 32px; position: relative; }
+        .section-inner { max-width: 1180px; margin: 0 auto; }
+        .section-eyebrow {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--navy);
+            margin: 0 0 20px;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+            line-height: 1.7;
+        }
+
+        /* About */
+        .about { background: var(--bg); }
+        .about .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--body);
+            max-width: 720px;
+        }
+        .about-facts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .about-fact {
+            padding: 28px 26px;
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+        }
+        .about-fact .fact-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .about-fact .fact-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: -0.015em;
+        }
+        .about-fact p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--body);
+            line-height: 1.7;
+        }
+        .about-note {
+            max-width: 720px;
+            margin: 48px auto 0;
+            padding-top: 32px;
+            border-top: 1px solid var(--line);
+            text-align: center;
+            font-size: 1rem;
+            color: var(--body);
+            line-height: 1.8;
+        }
+        .about-note strong { color: var(--navy); }
+
+        /* Lineup */
+        .lineup { background: var(--bg-alt); }
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .prod-soon-note {
+            margin: 40px auto 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.92rem;
+            letter-spacing: 0.2px;
+        }
+        .prod-card {
+            padding: 32px 28px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            transition: border-color .2s, transform .2s, box-shadow .2s;
+            display: block;
+        }
+        .prod-card.live:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(10, 37, 64, 0.08);
+        }
+        .prod-card.soon { opacity: 0.72; }
+        .prod-card .tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-bottom: 14px;
+        }
+        .prod-card.live .tag { background: rgba(201, 161, 74, 0.12); color: var(--accent); }
+        .prod-card.soon .tag { background: var(--bg-alt); color: var(--muted); }
+        .prod-card .nm {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            letter-spacing: -0.015em;
+        }
+        .prod-card .dc {
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        /* Services */
+        .services { background: var(--bg); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 760px);
+            justify-content: center;
+            gap: 28px;
+        }
+        .svc-card {
+            position: relative;
+            padding: 44px 40px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            transition: border-color .2s, box-shadow .2s, transform .2s;
+        }
+        .svc-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 18px 40px rgba(10, 37, 64, 0.08);
+            transform: translateY(-3px);
+        }
+        .svc-card .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(201, 161, 74, 0.12);
+            border-radius: 2px;
+            letter-spacing: 0.8px;
+        }
+        .svc-card h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 18px 0 12px;
+            letter-spacing: -0.02em;
+        }
+        .svc-card .lead {
+            color: var(--body);
+            font-size: 0.98rem;
+            margin: 0 0 24px;
+        }
+        .svc-card .features {
+            list-style: none;
+            margin: 0 0 28px; padding: 0;
+            border-top: 1px solid var(--line);
+        }
+        .svc-card .features li {
+            padding: 12px 0;
+            color: var(--body);
+            font-size: 0.93rem;
+            border-bottom: 1px solid var(--line);
+            display: flex; align-items: center;
+        }
+        .svc-card .features li::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--accent);
+            margin-right: 14px;
+            flex-shrink: 0;
+            border-radius: 50%;
+        }
+        .svc-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 10px 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color .15s;
+        }
+        .svc-link:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
+
+        /* ───────── Footer ───────── */
+        footer.roa-footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 72px 32px 28px;
+        }
+        .footer-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 56px;
+            padding-bottom: 44px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-col h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0 0 20px;
+        }
+        .footer-col p,
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.9rem;
+            line-height: 2;
+            display: block;
+        }
+        .footer-col a:hover { color: #ffffff; }
+        .footer-about .roa-brand { margin-bottom: 18px; }
+        .footer-about .roa-brand-text { color: #ffffff; }
+        .footer-about .roa-brand-text small { color: rgba(255, 255, 255, 0.5); }
+        .footer-about .desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            max-width: 360px;
+        }
+        .footer-bottom {
+            max-width: 1280px; margin: 0 auto;
+            padding-top: 24px;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        /* Business info */
+        .footer-business {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-business h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0 0 18px;
+        }
+        .biz-info {
+            margin: 0; padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 40px;
+        }
+        .biz-info > div {
+            display: flex;
+            gap: 14px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .biz-info dt {
+            color: rgba(255, 255, 255, 0.5);
+            min-width: 110px;
+            flex-shrink: 0;
+        }
+        .biz-info dd {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.75);
+            word-break: keep-all;
+        }
+        .biz-info dd a { color: inherit; }
+        .biz-info dd a:hover { color: #ffffff; }
+        .biz-info .biz-highlight dd {
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        @media (max-width: 700px) {
+            .biz-info { grid-template-columns: 1fr; gap: 8px; }
+            .biz-info dt { min-width: 96px; }
+        }
+
+        /* Reveal on scroll */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .roa-nav-inner { padding: 16px 20px; }
+            .roa-menu a { padding: 8px 10px; font-size: 0.88rem; }
+            .hero { padding: 120px 24px 80px; min-height: 80vh; }
+            .services-grid { grid-template-columns: 1fr; }
+            .prod-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-facts { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+            section { padding: 72px 24px; }
+        }
+        @media (max-width: 520px) {
+            .roa-brand-text small { display: none; }
+            .roa-menu { gap: 0; }
+            .roa-menu a { padding: 8px 6px; font-size: 0.82rem; }
+            .prod-grid { grid-template-columns: 1fr; }
+            .svc-card { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═════════ NAV ═════════ -->
+<nav class="roa-nav">
+    <div class="roa-nav-inner">
+        <a href="#top" class="roa-brand" aria-label="Roa 로아 홈">
+            <span class="roa-egg" aria-hidden="true"></span>
+            <span class="roa-brand-text">Roa<small>로아</small></span>
+        </a>
+        <ul class="roa-menu">
+            <li><a href="#about">회사소개</a></li>
+            <li><a href="#services">서비스</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ═════════ HERO ═════════ -->
+<header class="hero" id="top">
+    <div class="hero-inner">
+        <span class="hero-label">Roa Platform</span>
+        <h1>
+            기업의 일과 보안,<br>
+            <span class="accent">Roa</span>가 더 똑똑하게
+        </h1>
+        <p class="sub">
+            자동 위협 모니터링으로 보안을 책임집니다.
+        </p>
+        <div class="hero-actions">
+            <a href="https://deep.roa-ai.com" target="_blank" rel="noopener" class="btn-primary">Roa Rose 시작하기</a>
+        </div>
+    </div>
+</header>
+
+<!-- ═════════ ABOUT ═════════ -->
+<section class="about" id="about">
+    <div class="section-inner">
+        <span class="section-eyebrow reveal">About Roa</span>
+        <h2 class="section-title reveal">Roa 소개</h2>
+        <p class="section-subtitle reveal">
+            Roa(로아)는 보안 플랫폼 <strong>Roa Rose</strong>를 운영합니다.
+        </p>
+    </div>
+</section>
+
+<!-- ═════════ LINEUP ═════════ -->
+<section class="lineup" id="services">
+    <div class="section-inner">
+        <span class="section-eyebrow reveal">Service Lineup</span>
+        <h2 class="section-title reveal">서비스 라인업</h2>
+        <p class="section-subtitle reveal">Roa Rose의 주요 보안 기능을 확인하세요.</p>
+        <div class="services-grid">
+            <div class="svc-card reveal">
+                <span class="tag">ROA ROSE · LIVE</span>
+                <h3>Roa Rose</h3>
+                <p class="lead">다크웹과 공개 취약점을 실시간 모니터링하고, 위협을 AI가 분석해 리포트와 알림으로 전달합니다.</p>
+                <ul class="features">
+                    <li>다크웹 위협 모니터링</li>
+                    <li>이메일 유출 탐지</li>
+                    <li>서버 취약점 · CVE 스캔</li>
+                    <li>도메인 · 피싱 URL 탐지</li>
+                    <li>AI 위협 분석 리포트</li>
+                    <li>통합 보안 이력 관리 (SIEM)</li>
+                    <li>침해 대응 플레이북 (IR)</li>
+                    <li>월간 보안 보고서 자동 생성</li>
+                    <li>텔레그램/이메일 실시간 알림 · 일일 보안 요약</li>
+                </ul>
+                <a href="https://deep.roa-ai.com" target="_blank" rel="noopener" class="svc-link">Roa Rose 이용하기 →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer class="roa-footer">
+    <div class="footer-inner">
+        <div class="footer-col footer-about">
+            <a href="#top" class="roa-brand">
+                <span class="roa-egg" aria-hidden="true"></span>
+                <span class="roa-brand-text">Roa<small>로아</small></span>
+            </a>
+            <p class="desc">Roa는 자동 위협 모니터링 서비스를 운영하는 보안 기업입니다.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Service</h4>
+            <a href="https://deep.roa-ai.com" target="_blank" rel="noopener">Roa Rose</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span id="year"></span> Roa. All rights reserved.</span>
+        <span>roa-ai.com</span>
+    </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
